@@ -1,0 +1,49 @@
+// app/page.tsx
+import Link from "next/link";
+
+export default function Home() {
+  const tools = [
+    { name: "Image to PDF", href: "/image-to-pdf", description: "Convert images to PDF format quickly and easily." },
+    { name: "PDF to Image", href: "/pdf-to-image", description: "Extract images from PDF files efficiently." },
+    { name: "Compress PDF", href: "/compress-pdf", description: "Reduce the file size of your PDF documents." },
+    { name: "Merge PDFs", href: "/merge-pdf", description: "Combine multiple PDF files into one." },
+  ];
+
+  return (
+    <main className="min-h-screen flex flex-col">
+      {/* Navbar */}
+      <header className="bg-white shadow sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-xl font-bold text-blue-600">Image & PDF Tools</h1>
+          <nav className="space-x-4">
+            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
+            <Link href="#tools" className="text-gray-700 hover:text-blue-600 font-medium">Tools</Link>
+            <Link href="#contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-100 to-blue-200 text-center py-20 px-4">
+        <h2 className="text-4xl font-bold text-blue-800 mb-4">Simplify Your Document Workflow</h2>
+        <p className="text-lg text-blue-700">Use our free tools to convert, compress, and manage your images and PDFs online.</p>
+      </section>
+
+      {/* Tool Grid */}
+      <section id="tools" className="max-w-7xl mx-auto py-16 px-4 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {tools.map((tool) => (
+          <Link href={tool.href} key={tool.name} className="block p-6 bg-white shadow-lg rounded-2xl hover:shadow-xl transition">
+            <h3 className="text-xl font-semibold text-blue-700">{tool.name}</h3>
+            <p className="mt-2 text-gray-600 text-sm">{tool.description}</p>
+          </Link>
+        ))}
+      </section>
+
+      {/* Footer */}
+      <footer id="contact" className="bg-blue-600 text-white py-6 mt-auto text-center">
+        <p>&copy; {new Date().getFullYear()} Image & PDF Tools. All rights reserved.</p>
+        <p>Contact: <a href="mailto:support@example.com" className="underline">support@example.com</a></p>
+      </footer>
+    </main>
+  );
+}
