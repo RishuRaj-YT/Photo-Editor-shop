@@ -1,49 +1,66 @@
-// app/page.tsx
-import Link from "next/link";
-
-export default function Home() {
-  const tools = [
-    { name: "Image to PDF", href: "/image-to-pdf", description: "Convert images to PDF format quickly and easily." },
-    { name: "PDF to Image", href: "/pdf-to-image", description: "Extract images from PDF files efficiently." },
-    { name: "Compress PDF", href: "/compress-pdf", description: "Reduce the file size of your PDF documents." },
-    { name: "Merge PDFs", href: "/merge-pdf", description: "Combine multiple PDF files into one." },
-  ];
-
-  return (
-    <main className="min-h-screen flex flex-col">
-      {/* Navbar */}
-      <header className="bg-white shadow sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-blue-600">Image & PDF Tools</h1>
-          <nav className="space-x-4">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
-            <Link href="#tools" className="text-gray-700 hover:text-blue-600 font-medium">Tools</Link>
-            <Link href="#contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-100 to-blue-200 text-center py-20 px-4">
-        <h2 className="text-4xl font-bold text-blue-800 mb-4">Simplify Your Document Workflow</h2>
-        <p className="text-lg text-blue-700">Use our free tools to convert, compress, and manage your images and PDFs online.</p>
-      </section>
-
-      {/* Tool Grid */}
-      <section id="tools" className="max-w-7xl mx-auto py-16 px-4 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {tools.map((tool) => (
-          <Link href={tool.href} key={tool.name} className="block p-6 bg-white shadow-lg rounded-2xl hover:shadow-xl transition">
-            <h3 className="text-xl font-semibold text-blue-700">{tool.name}</h3>
-            <p className="mt-2 text-gray-600 text-sm">{tool.description}</p>
-          </Link>
-        ))}
-      </section>
-
-      {/* Footer */}
-      <footer id="contact" className="bg-blue-600 text-white py-6 mt-auto text-center">
-        <p>&copy; {new Date().getFullYear()} Image & PDF Tools. All rights reserved.</p>
-        <p>Contact: <a href="mailto:support@example.com" className="underline">support@example.com</a></p>
-      </footer>
-    </main>
-  );
-}
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolHub | Image & PDF Utilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --secondary: #10B981;
+      --accent: #F59E0B;
+      --bg-light: #F9FAFB;
+      --text-dark: #111827;
+      --text-muted: #6B7280;
+      --radius: 0.5rem;
+      --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    header { background: #fff; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .nav-links { display: none; }
+    .nav-links a { margin-left: 1.5rem; text-decoration: none; color: var(--text-dark); font-weight: 500; }
+    .cta { background: var(--primary); color: #fff; padding: 0.5rem 1rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .hero { text-align: center; padding: 4rem 1rem; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
+    .tools-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .tool-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; text-align: center; transition: transform .2s; }
+    .tool-card:hover { transform: translateY(-5px); }
+    .tool-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--primary); }
+    .tool-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .tool-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .tool-card a { text-decoration: none; font-weight: 600; color: var(--secondary); }
+    footer { background: #fff; padding: 2rem 1rem; margin-top: 4rem; }
+    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+    .footer-section { flex: 1 1 200px; }
+    .footer-section h4 { margin-bottom: 1rem; color: var(--text-dark); }
+    .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 0.5rem; }
+    .footer-section a { text-decoration: none; color: var(--text-muted); }
+    .social { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .social a { text-decoration: none; color: var(--text-muted); font-size: 1.2rem; }
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">ToolHub</a>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#tools">Tools</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div
